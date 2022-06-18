@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { NextPage } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { handleAuthCode } from "../../../lib/spotifyClient";
@@ -45,7 +46,7 @@ const SpotifyCallback: NextPage = () => {
       <div>
         <h2>An error occured</h2>
         <p>Please try again</p>
-        <a href="/">Return to home page</a>
+        <Link href="/">Return to home page</Link>
       </div>
     );
   }

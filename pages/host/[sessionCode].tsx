@@ -33,22 +33,18 @@ const HostScreen = () => {
 
   useEffect(() => {
     if (!router.query.sessionCode) return;
-    setSessionCode(router.query.sessionCode);
+    const sessionCode = router.query.sessionCode as string;
+    setSessionCode(sessionCode);
   }, [router.query]);
 
   const { data, error } = useSWR<SessionPayload>(
     sessionCode ? `/api/session?sessionCode=${sessionCode}` : null,
     {
+      // @ts-ignore
       fetcher,
       refreshInterval: 1000,
     }
   );
-
-  if (error) {
-    console.error(error);
-    return <div>an error occured</div>;
-  }
-  console.log(data);
 
   const [queue, setQueue] = useState<any[]>([]);
   const [deviceId, setDeviceId] = useState("");
@@ -74,6 +70,13 @@ const HostScreen = () => {
       }
     })();
   }, [data, sessionCode, deviceId]);
+
+  if (error) {
+    console.error(error);
+    return <div>an error occured</div>;
+  }
+  console.log(data);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.playerContainer}>
