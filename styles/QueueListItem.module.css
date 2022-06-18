@@ -1,0 +1,33 @@
+.queueListItemContainer {
+    display: grid;
+    grid-template-rows: auto auto;
+    width: 100%;
+}
+
+.textWrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30px 55% 20% 20%;
+    
+}
+
+.textWrapper p {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+}
+
+.header {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.listItem {
+    font-size: 1.25rem;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 4px 0px;
+}

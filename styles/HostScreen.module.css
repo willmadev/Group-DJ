@@ -1,0 +1,47 @@
+.mainContainer {
+  --player-height: 250px;
+  --details-height: 380px;
+  --gap: 35px;
+
+  height: 100vh;
+  width: 100vw;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.mainContainer > div {
+  background-color: #d0d0d0;
+  padding: 15px;
+}
+
+.playerContainer {
+  width: calc(75% - var(--gap) / 2);
+  height: calc(var(--player-height) - var(--gap) / 2);
+}
+
+.queueContainer {
+  width: calc(75% - var(--gap) / 2);
+  height: calc(100% - var(--gap) / 2 - var(--player-height));
+
+  display: flex;
+  flex-direction: column;
+}
+
+.participantContainer {
+  width: calc(25% - var(--gap) / 2);
+  height: calc(100% - var(--gap) / 2 - var(--details-height));
+}
+
+.detailsContainer {
+  width: calc(25% - var(--gap) / 2);
+  height: calc(var(--details-height) - var(--gap) / 2);
+}
+
+.detailsContainer h3 {
+  padding: 0px;
+  margin: 0px;
+  word-wrap: break-word;
+}
