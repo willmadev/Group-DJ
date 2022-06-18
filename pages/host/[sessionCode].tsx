@@ -11,6 +11,7 @@ import DetailsModule from "../../components/DetailsModule";
 import ParticipantsModule from "../../components/ParticipantsModule";
 
 import styles from "../../styles/HostScreen.module.css";
+import { refreshAccessToken } from "../../lib/spotifyClient";
 
 export type SessionPayload = {
   sessionCode: string;
@@ -61,6 +62,7 @@ const HostScreen = () => {
         setQueue(data.queue);
 
         console.log("Start playing");
+        await refreshAccessToken();
         await axios.post("/api/session/state", {
           status: "play_next",
           access_token: localStorage.getItem("access_token"),

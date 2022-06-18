@@ -144,18 +144,21 @@ const PlayerModule: FC<PlayerModuleProps> = ({
   }, [player, playerState]);
 
   useEffect(() => {
-    if (sessionCode === "" || deviceId === "") {
-      return;
-    }
-    if (playerState?.position !== playerState?.duration) {
-      return;
-    }
-    axios.post("/api/session/state", {
-      status: "play_next",
-      access_token: localStorage.getItem("access_token"),
-      sessionCode,
-      device_id: deviceId,
-    });
+    (async () => {
+      if (sessionCode === "" || deviceId === "") {
+        return;
+      }
+      if (playerState?.position !== playerState?.duration) {
+        return;
+      }
+      await refreshAccessToken();
+      axios.post("/api/session/state", {
+        status: "play_next",
+        access_token: localStorage.getItem("access_token"),
+        sessionCode,
+        device_id: deviceId,
+      });
+    })();
   }, [playerState, sessionCode, deviceId]);
 
   return (
